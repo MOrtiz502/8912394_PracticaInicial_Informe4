@@ -19,6 +19,8 @@ const horariocatedraticoRoutes_1 = __importDefault(require("./routes/horariocate
 const horarioauxiliarRoutes_1 = __importDefault(require("./routes/horarioauxiliarRoutes"));
 const postaddRoutes_1 = __importDefault(require("./routes/postaddRoutes"));
 const comentarioRoutes_1 = __importDefault(require("./routes/comentarioRoutes"));
+const cursonoaprobRoutes_1 = __importDefault(require("./routes/cursonoaprobRoutes"));
+const cursoaprobadoRoutes_1 = __importDefault(require("./routes/cursoaprobadoRoutes"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -47,6 +49,8 @@ class Server {
         this.app.use('/horariocatedraticolist', horariocatedraticoRoutes_1.default);
         this.app.use('/horarioauxiliarlist', horarioauxiliarRoutes_1.default);
         this.app.use('/comentario', comentarioRoutes_1.default);
+        this.app.use('/cursoNoAproblist', cursonoaprobRoutes_1.default);
+        this.app.use('/cursoaprobado', cursoaprobadoRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

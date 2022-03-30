@@ -16,6 +16,9 @@ import horariocatedraticoRoutes from './routes/horariocatedraticoRoutes';
 import horarioauxiliarRoutes from './routes/horarioauxiliarRoutes';
 import postaddRoutes   from './routes/postaddRoutes';
 import comentarioRoutes   from './routes/comentarioRoutes';
+import cursonoaprobRoutes from './routes/cursonoaprobRoutes';
+import cursoaprobadoRoutes from './routes/cursoaprobadoRoutes';
+
 
 class Server {
     
@@ -50,6 +53,9 @@ class Server {
         this.app.use('/horariocatedraticolist',horariocatedraticoRoutes);
         this.app.use('/horarioauxiliarlist',horarioauxiliarRoutes);
         this.app.use('/comentario',comentarioRoutes);
+        this.app.use('/cursoNoAproblist',cursonoaprobRoutes);
+        this.app.use('/cursoaprobado',cursoaprobadoRoutes);
+                
     }
 
     start(): void {
