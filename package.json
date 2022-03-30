@@ -2,6 +2,7 @@
   "dependencies": {
     "@angular/cdk": "^13.3.0",
     "ag-grid-angular": "^27.1.1",
-    "ag-grid-community": "^27.1.0"
+    "ag-grid-community": "^27.1.0",
+    "promise-mysql": "^3.3.2"
   }
 }

@@ -11,7 +11,7 @@ class WebappRoutes {
 
     config(): void {
         this.router.get('/', webappController.list);
-        this.router.get('/:id', webappController.getone);        
+        this.router.get('/:id', webappController.getone);
         this.router.post('/', webappController.create);
         this.router.put('/:id',webappController.update);   //put likes update action
         this.router.delete('/:id',webappController.delete);

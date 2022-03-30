@@ -9,19 +9,19 @@ class LoginController {
     }
 
     public async lc_validarUser (req: Request, res: Response): Promise<any> {
-        await pool.getConnection(function(err, connection) {
+        pool.getConnection(async function(err, connection) {
 
         var getUserSql = "select * from Usuario where (carnet=? or dpi = ?) and contrasenia=?";
         const { carnet, contrasenia } = req.params;
 
-        connection.query(getUserSql,[carnet, carnet,contrasenia], function(err, result) {
+        await connection.query(getUserSql,[carnet, carnet,contrasenia], function(err, result) {
                if (err) {
                  console.log('Hay Error: ' + err.message);
                  return result;
                }
                if (result.length > 0) {
                     console.log('[validarUser()] -> Resolvio el query - Select ...');
-                    console.log(result[0];
+                    console.log(result[0]);
                     return res.json(result[0]);
                  //   return 2;
                }

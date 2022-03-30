@@ -19,21 +19,23 @@ class LoginController {
     }
     lc_validarUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.getConnection(function (err, connection) {
-                var getUserSql = "select * from Usuario where (carnet=? or dpi = ?) and contrasenia=?";
-                const { carnet, contrasenia } = req.params;
-                connection.query(getUserSql, [carnet, carnet, contrasenia], function (err, result) {
-                    if (err) {
-                        console.log('Hay Error: ' + err.message);
-                        return result;
-                    }
-                    if (result.length > 0) {
-                        console.log('[validarUser()] -> Resolvio el query - Select ...');
-                        console.log(result[0]);
-                        return res.json(result[0]);
-                        //   return 2;
-                    }
-                    //res.status(404).json({ text: "El idUsuario no existe"});
+            database_1.default.getConnection(function (err, connection) {
+                return __awaiter(this, void 0, void 0, function* () {
+                    var getUserSql = "select * from Usuario where (carnet=? or dpi = ?) and contrasenia=?";
+                    const { carnet, contrasenia } = req.params;
+                    yield connection.query(getUserSql, [carnet, carnet, contrasenia], function (err, result) {
+                        if (err) {
+                            console.log('Hay Error: ' + err.message);
+                            return result;
+                        }
+                        if (result.length > 0) {
+                            console.log('[validarUser()] -> Resolvio el query - Select ...');
+                            console.log(result[0]);
+                            return res.json(result[0]);
+                            //   return 2;
+                        }
+                        //res.status(404).json({ text: "El idUsuario no existe"});
+                    });
                 });
             });
         });

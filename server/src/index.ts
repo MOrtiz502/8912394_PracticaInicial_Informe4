@@ -5,8 +5,17 @@ import cors from 'cors';
 
 import indexRoutes from './routes/indexRoutes';
 import webappRoutes from './routes/webappRoutes';
+import webapplistRoutes from './routes/webapplistRoutes';
+import cursolistRoutes from './routes/cursolistRoutes';
+import postlistRoutes from './routes/postlistRoutes';
 import loginRoutes from './routes/loginRoutes';
-
+import usersRoutes from './routes/usersRoutes';
+import catedraticoRoutes from './routes/catedraticoRoutes';
+import todoscursolistRoutes from './routes/todoscursolistRoutes';
+import horariocatedraticoRoutes from './routes/horariocatedraticoRoutes';
+import horarioauxiliarRoutes from './routes/horarioauxiliarRoutes';
+import postaddRoutes   from './routes/postaddRoutes';
+import comentarioRoutes   from './routes/comentarioRoutes';
 
 class Server {
     
@@ -29,8 +38,18 @@ class Server {
     routes(): void {
         this.app.use('/',indexRoutes);
         this.app.use('/api/webapp',webappRoutes);
+        this.app.use('/list',webapplistRoutes);
+        this.app.use('/cursolist',cursolistRoutes);
+        this.app.use('/todoscursolist',todoscursolistRoutes);
         this.app.use('/login',loginRoutes);
         this.app.use('/webapp',webappRoutes);
+        this.app.use('/postlist',postlistRoutes);
+        this.app.use('/postadd',postaddRoutes);
+        this.app.use('/user',usersRoutes);
+        this.app.use('/catedraticolist',catedraticoRoutes);
+        this.app.use('/horariocatedraticolist',horariocatedraticoRoutes);
+        this.app.use('/horarioauxiliarlist',horarioauxiliarRoutes);
+        this.app.use('/comentario',comentarioRoutes);
     }
 
     start(): void {

@@ -4,9 +4,9 @@ import pool from '../database';
 
 class WebappController {
 
-
+/*
     public async list (req: Request, res: Response): Promise<void> {
-/*        const usuario = await pool.query('select * from Usuario');
+        const usuario = await pool.query('select * from Usuario');
         res.json({ text: 'Listing info...'});
         if (usuario.values?.length > 0 ) {
             console.log(usuario.values);
@@ -14,12 +14,12 @@ class WebappController {
         else {
             console.log('Registro vacio...');
         }
-*/      
-        await pool.getConnection(function(err, connection) {
+      
+        pool.getConnection(async function(err, connection) {
 
         var getUserSql = "select idUsuario,dpi,carnet,nombre,apellido,contrasenia,correo,estudiante from Usuario";
 
-        connection.query(getUserSql,'', function(err, result) {
+        await connection.query(getUserSql,'', function(err, result) {
                if (err) {
                  console.log('Error: ' + err.message);
                  return;
@@ -29,14 +29,27 @@ class WebappController {
             })
         });
     }
-
+*/
+    public async list(req: Request, res: Response): Promise<any> {
+        const { id } = req.params;
+       await pool.query('select * from Usuario ','', function(err, result, fields) {
+            if (err) throw err;
+            if(result.length > 0){
+                res.json(result);
+            }else{
+                res.status(404).json({ text: "Usuarios no existen!!!" });
+            }        
+        });
+    }
+        
+/*
     public async getone (req: Request, res: Response): Promise<any>{
-            await pool.getConnection(function(err, connection) {
+            pool.getConnection(async function(err, connection) {
 
             var getUserSql = "select * from Usuario where idUsuario=?";
             const { id } = req.params;
     
-            connection.query(getUserSql,[id], function(err, result) {
+             await connection.query(getUserSql,[id], function(err, result) {
                    if (err) {
                      console.log('Error: ' + err.message);
                      return;
@@ -50,7 +63,20 @@ class WebappController {
                 })
             });
     }
-    
+*/
+
+public async getone(req: Request, res: Response): Promise<any> {
+    const { id } = req.params;
+   await pool.query('select * from Usuario where idUsuario=?', [id], function(err, result, fields) {
+        if (err) throw err;
+        if(result.length > 0){
+            res.json(result);
+        }else{
+            res.status(404).json({ text: "El Usuario no existe" });
+        }        
+    });
+}
+
     public async create (req: Request, res: Response): Promise<void>{
         await pool.query('INSERT INTO usuario set ?',req.body);
         res.json({message: 'User saved......'});
