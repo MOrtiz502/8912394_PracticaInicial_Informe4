@@ -19,7 +19,7 @@ class CursolistController {
             console.log("entro al List de CursolistController.ts");
             const { id } = req.params;
             console.log("id para lista cursos aprobados:", [id]);
-            const sqlString = "select A.*, B.Nombre from Curso_Aprobado A, Curso B where A.idCurso = B.IdCurso and A.idUsuario = " + id;
+            const sqlString = "select A.idCursoAprobado, A.idUsuario, A.idCurso, A.nota, left(A.fecha_aprobado,10) as fecha_aprobado, B.Nombre from Curso_Aprobado A, Curso B where A.idCurso = B.IdCurso and A.idUsuario = " + id + " order by A.fecha_creación desc";
             yield database_1.default.query(sqlString, '', function (err, result, fields) {
                 if (err)
                     throw err;
