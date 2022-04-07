@@ -13,6 +13,8 @@ class CursoAprobadoRoutes {
     config() {
         //        this.router.get('/:idUsuario', cursonoaprobController.list);  //Listado de cursos no aprobados de un Usuario
         this.router.post('/', cursonoaprobController_1.default.create);
+        this.router.delete('/:id', cursonoaprobController_1.default.delete);
+        this.router.put('/:id', cursonoaprobController_1.default.update);
         /*        this.router.get('/', webappController.list);
                 this.router.post('/', webappController.create);
                 this.router.put('/:id',webappController.update);

@@ -65,14 +65,15 @@ class CursoNoAprobController {
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE Usuario set ? WHERE idUsuario =?', [req.body, id]);
-            res.json({ message: 'El Idsuario fue actualizado...  : ' + [id] });
+            //console.log('UPDATE Curso_Aprobado set ? WHERE idcursoAprobado =?',[req.body,id]);
+            yield database_1.default.query('UPDATE Curso_Aprobado set ? WHERE idcursoAprobado =?', [req.body, id]);
+            res.json({ message: 'El curso Aprobado fue actualizado...  : ' + [id] });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM usuario WHERE idUsuario =?', [id]);
+            yield database_1.default.query('DELETE FROM Curso_Aprobado WHERE idCursoAprobado =?', [id]);
             res.json({ message: 'Deleted....  : ' + [id] });
         });
     }

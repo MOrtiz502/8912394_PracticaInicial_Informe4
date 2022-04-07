@@ -18,6 +18,7 @@ import postaddRoutes   from './routes/postaddRoutes';
 import comentarioRoutes   from './routes/comentarioRoutes';
 import cursonoaprobRoutes from './routes/cursonoaprobRoutes';
 import cursoaprobadoRoutes from './routes/cursoaprobadoRoutes';
+import registrouserRoutes  from './routes/registrouserRoutes';
 
 
 class Server {
@@ -55,7 +56,7 @@ class Server {
         this.app.use('/comentario',comentarioRoutes);
         this.app.use('/cursoNoAproblist',cursonoaprobRoutes);
         this.app.use('/cursoaprobado',cursoaprobadoRoutes);
-                
+        this.app.use('/registrouser',registrouserRoutes);
     }
 
     start(): void {

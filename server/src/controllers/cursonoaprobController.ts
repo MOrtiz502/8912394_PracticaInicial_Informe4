@@ -48,13 +48,16 @@ public async create (req: Request, res: Response): Promise<void>{
 
     public async update(req: Request, res:Response): Promise<void> {
         const { id } = req.params;
-        await pool.query('UPDATE Usuario set ? WHERE idUsuario =?',[req.body,id]);
-        res.json({ message: 'El Idsuario fue actualizado...  : ' + [id]});
+       
+        //console.log('UPDATE Curso_Aprobado set ? WHERE idcursoAprobado =?',[req.body,id]);
+
+        await pool.query('UPDATE Curso_Aprobado set ? WHERE idcursoAprobado =?',[req.body,id]);
+        res.json({ message: 'El curso Aprobado fue actualizado...  : ' + [id]});
     }
 
     public async delete(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await pool.query('DELETE FROM usuario WHERE idUsuario =?',[id]);
+        await pool.query('DELETE FROM Curso_Aprobado WHERE idCursoAprobado =?',[id]);
         res.json({message: 'Deleted....  : ' + [id]});
     }
 }
